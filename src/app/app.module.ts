@@ -11,6 +11,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegistrarEmpresaComponent } from './empresas/registrar-empresa/registrar-empresa.component';
 import { ActualizarEmpresaComponent } from './empresas/actualizar-empresa/actualizar-empresa.component'
 import { FormsModule } from '@angular/forms';
+import { ListarSedesComponent } from './sedes/listar-sedes/listar-sedes.component';
+import { ListarEmpleadosComponent } from './empleados/listar-empleados/listar-empleados.component';
+import { AccesoUsuarioComponent } from './login/acceso-usuario/acceso-usuario.component';
 
 
 @NgModule({
@@ -19,7 +22,10 @@ import { FormsModule } from '@angular/forms';
     EmpresaComponent,
     ListaEmpresasComponent,
     RegistrarEmpresaComponent,
-    ActualizarEmpresaComponent
+    ActualizarEmpresaComponent,
+    ListarSedesComponent,
+    ListarEmpleadosComponent,
+    AccesoUsuarioComponent
   ],
   imports: [
     BrowserModule,
