@@ -1,0 +1,56 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Actualizacion de empresa</h3>
+    <form (ngSubmit)= "onSubmit()" #empresaForm = "ngForm">
+      <div class="form-group">
+        
+        <label> Nro de RUC </label>
+        <input type="text"
+               class="form-control"
+               id = "nroRuc"
+                [(ngModel)] = "empresa.nroRuc"
+                minlength="11"
+                maxlength="20"
+                name="nroRuc"
+        >
+
+      </div>
+
+      <div class="form-group">
+        <label> Razón Social </label>
+        <input type="text"
+               class="form-control"
+               id = "razonSocial"
+                [(ngModel)] = "empresa.razonSocial"
+                name="razonSocial"
+                required
+                minlength="4"
+                maxlength="150"
+                #razonSocial = "ngModel">
+    </div>
+  
+      <div class="form-group">
+        <label> Direccion Principal </label>
+        <input type="text"
+               class="form-control"
+               id = "direccPrincipal"
+               [(ngModel)] = "empresa.direccPrincipal"
+               name="direccPrincipal"
+               required
+               minlength="4"
+               maxlength="150"
+               #dirPrincipal = "ngModel">
+      </div>
+
+
+      
+  
+      <button class="btn btn-success" [disabled]= "!empresaForm.form.valid">Actualizar Empresa</button>
+    </form>
+  </div>
+  
+
+
+
+
+
+  

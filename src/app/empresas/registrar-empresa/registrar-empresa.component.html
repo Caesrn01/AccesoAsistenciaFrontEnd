@@ -1,0 +1,41 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">
+        Registro de Empresa
+    </h3>
+    <form (ngSubmit) = "onSubmit()">
+        <div class="form-group">
+            <label> Nro de RUC </label>
+            <input type="text"
+                   class="form-control"
+                   id = "nroRuc"
+                    [(ngModel)] = "empresa.nroRuc"
+                    name="nroRuc"
+            >
+        </div>
+
+        <div class="form-group">
+            <label> Razón Social </label>
+            <input type="text"
+                   class="form-control"
+                   id = "razonSocial"
+                    [(ngModel)] = "empresa.razonSocial"
+                    name="razonSocial"
+            >
+        </div>
+
+        <div class="form-group">
+            <label> Direccion Principal </label>
+            <input type="text"
+                   class="form-control"
+                   id = "direccPrincipal"
+                   [(ngModel)] = "empresa.direccPrincipal"
+                   name="direccPrincipal"
+            >
+        </div>
+
+        <br>
+        <button class="btn btn-success">Guardar</button>
+
+  
+    </form>
+</div>

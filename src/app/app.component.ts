@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'FrontSistemaAccesoEmpleados';
+  title = 'Sistema Administracion de Gestion de Accessos a empleados';
 }
