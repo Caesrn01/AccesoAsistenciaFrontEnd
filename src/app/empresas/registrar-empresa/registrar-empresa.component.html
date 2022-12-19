@@ -1,41 +1,106 @@
-<div class="col-md-6 offset-md-3">
-    <h3 class="text-center">
-        Registro de Empresa
-    </h3>
-    <form (ngSubmit) = "onSubmit()">
-        <div class="form-group">
-            <label> Nro de RUC </label>
-            <input type="text"
-                   class="form-control"
-                   id = "nroRuc"
-                    [(ngModel)] = "empresa.nroRuc"
-                    name="nroRuc"
-            >
-        </div>
+<br>
 
-        <div class="form-group">
-            <label> Razón Social </label>
-            <input type="text"
-                   class="form-control"
-                   id = "razonSocial"
-                    [(ngModel)] = "empresa.razonSocial"
-                    name="razonSocial"
-            >
-        </div>
 
-        <div class="form-group">
-            <label> Direccion Principal </label>
-            <input type="text"
-                   class="form-control"
-                   id = "direccPrincipal"
-                   [(ngModel)] = "empresa.direccPrincipal"
-                   name="direccPrincipal"
-            >
-        </div>
 
-        <br>
-        <button class="btn btn-success">Guardar</button>
+<div class="card bg-dark text-white">
+    <div class="card-header">{{ titulo }}</div>
+    <div class="card-body bg-secondary text-white">
+        <form #empresaForm="ngForm">
+            <div class="form-group row">
+                <label for="nroRuc" class="col-form-label col-sm-2">Nro de RUC</label>
+                <div class="col-sm-6">
+                    <input type="text"
+                            class="form-control"
+                            id = "nroRuc"
+                            [(ngModel)] = "empresa.nroRuc"
+                            name="nroRuc"                            
+                            required minlength="11" maxlength="20" #nroRuc="ngModel"
+                    >
 
-  
-    </form>
+                    <div class="alert alert-danger" *ngIf="nroRuc.invalid && (nroRuc.dirty || nroRuc.touched)">
+                        <div *ngIf="nroRuc.errors?.required">
+                          Numero de Ruc es requerido
+                        </div>
+                        <div *ngIf="nroRuc.errors?.minlength">
+                          Numero de Ruc debe tener al menos 11 caracteres
+                        </div>
+                        <div *ngIf="nroRuc.errors?.maxlength">
+                            Numero de Ruc debe tener como maximo 20 caracteres
+                          </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+    <br>
+            <div class="form-group row">
+                <label for="nroRuc" class="col-form-label col-sm-2">Razón Social</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control"
+                            id = "razonSocial"
+                            [(ngModel)] = "empresa.razonSocial"
+                            name="razonSocial"                             
+                            required #razonSocial="ngModel"
+                            >
+
+
+                    <div class="alert alert-danger" *ngIf="razonSocial.invalid && (razonSocial.dirty || razonSocial.touched)">
+                        <div *ngIf="razonSocial.errors?.required">
+                                  Razon Social es requerido
+                        </div>
+
+                    </div>
+
+                    
+                </div>     
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="nroRuc" class="col-form-label col-sm-2"> Direccion Principal </label>
+                <div class="col-sm-6">
+                        <input type="text"
+                                class="form-control"
+                                id = "direccPrincipal"
+                                [(ngModel)] = "empresa.direccPrincipal"
+                               required #direccPrincipal = "ngModel"
+                                name="direccPrincipal">
+                        <div class="alert alert-danger" *ngIf="direccPrincipal.invalid && (direccPrincipal.dirty || direccPrincipal.touched)">
+                            <div *ngIf="direccPrincipal.errors?.required">
+                                    Direccion es requerido
+                            </div>
+            
+                        </div>
+                </div>
+
+            </div>
+    
+            <br>
+          <div class="form-group row" style="text-align: center;">
+            <div class="col-sm-6">
+              <button class="btn btn-primary" role="button" (click)='guardarEmpresa()' *ngIf="!empresa.id else elseBlock" >Crear Empresa</button>
+    
+              <ng-template #elseBlock>
+                <button class="btn btn-primary" role="button" (click)='actualizarEmpresa()' [disabled]="!empresaForm.form.valid">Editar Empresa</button>
+              </ng-template>
+            </div>
+          </div>
+    
+           
+    
+      
+        </form>
+
+    </div>
 </div>
+       
+<ul class="alert alert-danger" *ngIf="totErrores > 0">
+    <li *ngFor="let err of errores">
+      {{ err }}
+    </li>
+  </ul>
+  
+
+

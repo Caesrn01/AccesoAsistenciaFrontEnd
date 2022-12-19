@@ -27,7 +27,7 @@ export class ActualizarEmpresaComponent implements OnInit {
   }
 
   onSubmit(){
-    this.empresaService.actualizarEmpresa(this.id,this.empresa).subscribe(dato => {
+    this.empresaService.actualizarEmpresa(this.empresa).subscribe(dato => {
       this.RetornarListaEmpresas();
     },error => console.log(error));
   }

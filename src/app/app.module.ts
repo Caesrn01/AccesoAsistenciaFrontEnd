@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { ListarSedesComponent } from './sedes/listar-sedes/listar-sedes.component';
 import { ListarEmpleadosComponent } from './empleados/listar-empleados/listar-empleados.component';
 import { AccesoUsuarioComponent } from './login/acceso-usuario/acceso-usuario.component';
+import { RegistrarEmpleadosComponent } from './empleados/registrar-empleados/registrar-empleados.component';
+import { LoginComponent } from './usuarios/login.component';
+
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { AccesoUsuarioComponent } from './login/acceso-usuario/acceso-usuario.co
     ActualizarEmpresaComponent,
     ListarSedesComponent,
     ListarEmpleadosComponent,
-    AccesoUsuarioComponent
+    AccesoUsuarioComponent,
+    RegistrarEmpleadosComponent,
+    LoginComponent
+    
   ],
   imports: [
     BrowserModule,

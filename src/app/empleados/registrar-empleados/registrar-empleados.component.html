@@ -1,0 +1,151 @@
+<br>
+
+
+
+<div class="card bg-dark text-white">
+    <div class="card-header">{{ titulo }}</div>
+    <div class="card-body bg-secondary text-white">
+        <form #empleadoForm="ngForm">
+            <div class="form-group row">
+                <label for="codigo" class="col-form-label col-sm-2">Codigo</label>
+                <div class="col-sm-6">
+                    <input type="text"
+                            class="form-control"
+                            id = "codigo"
+                            [(ngModel)] = "empleado.codigo"
+                            name="codigo"                            
+                            required minlength="11" maxlength="20" #nroRuc="ngModel"
+                    >
+
+   
+
+
+
+
+                </div>
+
+            </div>
+    <br>
+            <div class="form-group row">
+                <label for="tipoEmpleado" class="col-form-label col-sm-2">Rol</label>
+
+                <div class="col-sm-6">
+                    <input type="text" class="form-control"
+                            id = "tipoEmpleado"
+                            name="tipoEmpleado"
+                            [(ngModel)] = "empleado.tipo_empleado.id"                             
+                            
+                            >
+
+         
+                    
+                </div> 
+
+              
+            <br>
+            </div>
+
+            <div class="form-group row">
+                <label for="apellido" class="col-form-label col-sm-2"> Apellido </label>
+                <div class="col-sm-6">
+                        <input type="text"
+                                class="form-control"
+                                id = "apellido"
+                                [(ngModel)] = "empleado.apellido"
+                               required #direccPrincipal = "ngModel"
+                                name="apellido">
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label col-sm-2"> Nombre </label>
+                <div class="col-sm-6">
+                        <input type="text"
+                                class="form-control"
+                                id = "nombre"
+                                [(ngModel)] = "empleado.nombre"
+                               required #direccPrincipal = "ngModel"
+                                name="nombre">
+
+                </div>
+
+            </div>
+    
+            <br>
+
+            <div class="form-group row">
+                <label for="nroIdentificacion" class="col-form-label col-sm-2"> # Identificación </label>
+                <div class="col-sm-6">
+                        <input type="text"
+                                class="form-control"
+                                id = "nroIdentificacion"
+                                [(ngModel)] = "empleado.nroIdentificacion"
+                               required #direccPrincipal = "ngModel"
+                                name="nroIdentificacion">
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="form-group row">
+                <label for="email" class="col-form-label col-sm-2"> Email </label>
+                <div class="col-sm-6">
+                        <input type="text"
+                                class="form-control"
+                                id = "email"
+                                [(ngModel)] = "empleado.email"
+                               required #direccPrincipal = "ngModel"
+                                name="email">
+
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                <label for="fechaIngreso" class="col-form-label col-sm-2"> Fecha Ingreso </label>
+                <div class="col-sm-6">
+                        <input type="date"
+                                class="form-control"
+                                id = "fechaIngreso"
+                                [(ngModel)] = "empleado.fechaIngreso"
+                               required #direccPrincipal = "ngModel"
+                                name="fechaIngreso">
+
+                </div>
+
+            </div>
+
+          <div class="form-group row" style="text-align: center;">
+            <div class="col-sm-6">
+              <button class="btn btn-primary" role="button" *ngIf="!empleado.id else elseBlock" (click)='guardarEmpleado()'  >Crear Empleado</button>
+    
+              <ng-template #elseBlock>
+               
+                <button class="btn btn-primary" role="button" (click)='actualizarEmpleado()'>Actualizar Empleado</button>
+            </ng-template>
+            </div>
+          </div>
+    
+           
+    
+      
+        </form>
+
+    </div>
+</div>
+       
+<ul class="alert alert-danger" *ngIf="totErrores > 0">
+    <li *ngFor="let err of errores">
+      {{ err }}
+    </li>
+  </ul>
+  
+
+
+

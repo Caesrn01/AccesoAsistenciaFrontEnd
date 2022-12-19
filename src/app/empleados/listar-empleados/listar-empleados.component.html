@@ -1,1 +1,59 @@
-<p>listar-empleados works!</p>
+<div class="card border-primary mb-3">
+    <div class="card-header">Empleados</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Listado de empleados</h5>
+      <div class="my-2 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/empleados/registrar']">
+            Crear Empleado
+        </button>
+      </div>
+      <div *ngIf="totalEmpleados == 0" class="alert alert-info">
+         No hay registros en la base de datos!
+      </div>
+      <table class="table table-bordered table-striped" *ngIf="totalEmpleados > 0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Codigo</th>
+            <th>Tipo</th>
+            <th>Apellidos</th>
+             <th>Nombres</th>
+             <th># Identificacion</th>
+             <th>email</th>
+             <th>Fecha Ingreso</th>
+             <th>editar</th>
+             <th>desactivar</th>
+             <th>eliminar</th>
+
+          </tr>
+        </thead>
+        <tbody>
+      
+          <tr *ngFor="let empleado of empleados">
+            <td>{{empleado.id}}</td>
+            <td>{{empleado.codigo}}</td>
+            <td>{{empleado.tipo_empleado.descripcion}}</td>
+            <td>{{empleado.apellido}}</td>
+            <td>{{empleado.nombre}}</td>
+            <td>{{empleado.nroIdentificacion}}</td>
+            <td >{{empleado.email}}</td> 
+            <td >{{empleado.fechaIngreso}}</td> 
+            <td>
+              <button type="button" name="editar" [routerLink]="['/empleados/actualizar', empleado.id]" class="btn btn-primary btn-sm">editar</button>
+            </td>
+            <td>
+                <button type="button" name="desactivar" (click)='desactivarEmpleado(empleado.id,empleado.nombre)' class="btn btn-warning btn-sm">desactivar</button>
+              </td>
+            <td>
+              <button type="button" name="eliminar" (click)='eliminarEmpleado(empleado)' class="btn btn-danger btn-sm">eliminar</button>
+            </td>
+
+
+
+
+          </tr>
+        </tbody>
+      </table>
+ 
+    </div>
+  </div>

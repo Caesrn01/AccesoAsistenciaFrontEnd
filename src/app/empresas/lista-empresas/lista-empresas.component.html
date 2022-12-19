@@ -1,36 +1,49 @@
-<h1>Listado de Empresas</h1>
 
 
-<table class="table table-striped">
-    <thead class="table-dark">
+<div class="card border-primary mb-3">
+  <div class="card-header">Empresas</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de empresas</h5>
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/empresas/registrar']">
+          Crear Empresa
+      </button>
+    </div>
+    <div *ngIf="totalEmpresas == 0" class="alert alert-info">
+       No hay registros en la base de datos!
+    </div>
+    <table class="table table-bordered table-striped" *ngIf="totalEmpresas > 0">
+      <thead>
         <tr>
-           
-            <th>Nro Ruc</th>
-            <th>Razon Social</th>
-            <th>Direccion Principal</th>
-             <th>Estado</th>
-             <th>Acciones</th>
-             
-         </tr>
-    </thead>
-    <tbody  *ngFor="let empresa of empresas">
-        <tr>
-           
-            <td>{{empresa.nroRuc}}</td>
-            <td>{{empresa.razonSocial}}</td>
-            <td>{{empresa.direccPrincipal}}</td>
-            <td >Activo</td>    
-            <td>
-                <button (click)="actualizarEmpresa(empresa.id)" class="btn btn-success"
-                >
-                    Editar
-                </button>
-                <button (click)="eliminarEmpresa(empresa.id)" style="margin-left:5px"
-                        class="btn btn-danger"
-                 >
-                    Eliminar
-        </button>
-            </td>
+          <th>#</th>
+          <th>Nro Ruc</th>
+          <th>Razon Social</th>
+          <th>Direccion Principal</th>
+           <th>Estado</th>
+           <th>editar</th>
+           <th>eliminar</th>
         </tr>
-    </tbody>
-</table>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empresa of empresas">
+          <td>{{empresa.id}}</td>
+          <td>{{empresa.nroRuc}}</td>
+          <td>{{empresa.razonSocial}}</td>
+          <td>{{empresa.direccPrincipal}}</td>
+          <td >Activo</td> 
+          <td>
+            <button type="button" name="editar" [routerLink]="['/empresas/actualizar', empresa.id]" class="btn btn-primary btn-sm">editar</button>
+          </td>
+          <td>
+            <button type="button" name="eliminar" (click)='eliminarEmpresa(empresa)' class="btn btn-danger btn-sm">eliminar</button>
+          </td>
+
+
+
+
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
