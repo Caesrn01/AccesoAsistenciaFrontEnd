@@ -1,8 +1,9 @@
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,throwError } from 'rxjs';
 import {map, catchError} from 'rxjs/operators' 
-import { Empresa } from '../class/empresa';
+import { Sede } from '../class/sede';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
@@ -11,7 +12,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class EmpresaService {
+export class SedeService {
 
 
   constructor(private httpClient : HttpClient, private router: Router,
@@ -20,7 +21,7 @@ export class EmpresaService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   
-  private baseUrl = "http://localhost:9000/api/empresa";
+  private baseUrl = "http://localhost:9000/api/sede";
 
   private agregarAuthorizationHeader() {
     let token = this.authService.token;
@@ -43,7 +44,7 @@ export class EmpresaService {
     if (e.status == 403) {
      // swal('Acceso denegado', `Hola ${this.authService.usuario.username} no tienes acceso a este recurso!`, 'warning');
       Swal.fire({icon: 'error', title: 'Acceso Denegado', text: `Hola ${this.authService.usuario.username} no tienes acceso a este recurso!`}) 
-      this.router.navigate(['/clientes']);
+      this.router.navigate(['/sedes']);
         return true;
     }
     return false;
@@ -75,21 +76,21 @@ export class EmpresaService {
     );
   }*/
 
-  obtenerListaEmpresas():Observable<Empresa[]>
+  obtenerListaSedes():Observable<Sede[]>
   {
-    return this.httpClient.get<Empresa[]>(`${this.baseUrl}`);
+    return this.httpClient.get<Sede[]>(`${this.baseUrl}`);
   }
   
-  obtenerEmpresaPorId(id:number):Observable<Empresa>{
-    return this.httpClient.get<Empresa>(`${this.baseUrl}/${id}`, {headers: this.agregarAuthorizationHeader()} ).pipe(
+  obtenerSedePorId(id:number):Observable<Sede>{
+    return this.httpClient.get<Sede>(`${this.baseUrl}/${id}`, {headers: this.agregarAuthorizationHeader()} ).pipe(
       catchError(e => {
 
         if (this.isNoAutorizado(e)) {
-          this.router.navigate(["/empresas/listar-empresas"]);
+          this.router.navigate(["/sedes/listar"]);
           return throwError(e);
         }
 
-        this.router.navigate(["/empresas/listar-empresas"]);
+        this.router.navigate(["/sedes/listar"]);
         console.error(e.error.mensaje);
         Swal.fire({icon: 'error', title: 'Error al editar', text: e.error.mensaje })
         return throwError(e);
@@ -100,10 +101,11 @@ export class EmpresaService {
     );
   }
 
-  registrarEmpresa(empresa:Empresa):Observable<Empresa>{
+  
+  registrarSede(sede:Sede):Observable<Sede>{
    // return this.httpClient.post(`${this.baseUrl}`, empresa,{ headers: this.httpHeaders }).pipe(
-    return this.httpClient.post(`${this.baseUrl}`, empresa,{ headers: this.agregarAuthorizationHeader() }).pipe(
-      map((response: any) => response.empresa as Empresa),
+    return this.httpClient.post(`${this.baseUrl}`, sede,{ headers: this.agregarAuthorizationHeader() }).pipe(
+      map((response: any) => response.sede as Sede),
       catchError(e => {
 
           if (this.isNoAutorizado(e)) {
@@ -126,9 +128,9 @@ export class EmpresaService {
 
 
 
-  actualizarEmpresa(empresa:Empresa): Observable<any>{
+  actualizarSede(sede:Sede): Observable<any>{
     //return this.httpClient.put(`${this.baseUrl}/${empresa.id}`, empresa,{ headers: this.httpHeaders }).pipe(
-      return this.httpClient.put(`${this.baseUrl}/${empresa.idEmpresa}`, empresa,{ headers: this.agregarAuthorizationHeader() }).pipe(
+      return this.httpClient.put(`${this.baseUrl}/${sede.idSede}`, sede,{ headers: this.agregarAuthorizationHeader() }).pipe(
       catchError(e => {
 
         if (this.isNoAutorizado(e)) {
@@ -146,9 +148,10 @@ export class EmpresaService {
     );   
   }
 
-  eliminarEmpresa(id:number): Observable<any>{
+ 
+  eliminarSede(id:number): Observable<any>{
     //return this.httpClient.delete<Empresa>(`${this.baseUrl}/${id}`,{ headers: this.httpHeaders }).pipe(
-      return this.httpClient.delete<Empresa>(`${this.baseUrl}/${id}`,{ headers: this.agregarAuthorizationHeader() }).pipe(
+      return this.httpClient.delete<Sede>(`${this.baseUrl}/${id}`,{ headers: this.agregarAuthorizationHeader() }).pipe(
       
       catchError(e => {
 

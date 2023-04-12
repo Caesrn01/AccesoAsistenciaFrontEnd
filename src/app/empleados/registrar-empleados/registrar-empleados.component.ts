@@ -50,7 +50,7 @@ export class RegistrarEmpleadosComponent implements OnInit {
 
   console.log(this.empleado);
   this.empleado.estado = true;
-  this.empleado.empresa.id =2;
+  this.empleado.empresa.idEmpresa =2;
   this.RetornarListaEmpleados();
   Swal.fire('Nuevo Empleado', `El empleado<b> ${this.empleado.nombre} </b> ha sido creado con éxito`, 'success' )
   this.router.navigate(['/empleados/listar']);
@@ -88,6 +88,7 @@ export class RegistrarEmpleadosComponent implements OnInit {
  }
 
  actualizarEmpleado(){
+
       this.empleadoService.actualizarEmpleado(this.empleado).subscribe(empleado => {    
           this.RetornarListaEmpleados();
           Swal.fire('Empleado actualizada', 'Se actualizaron los datos con éxito', 'success' )

@@ -76,10 +76,7 @@ login(): void {
   
   console.log(this.usuario.username);
   console.log(this.usuario.password );
-  /*if (this.usuario.username == null || this.usuario.password == null) {
-    Swal.fire({icon: 'error', title: 'Error', text: 'Username o password vacías!'})
-    return;
-  }*/
+ 
 
   if (this.usuario.username == "" || this.usuario.password == "") {
     Swal.fire({icon: 'error', title: 'Error', text: 'Username o password vacías!'})

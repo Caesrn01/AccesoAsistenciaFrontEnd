@@ -36,11 +36,7 @@ export class AuthService {
 
   login(usuario: Usuario): Observable<any> {
    // login(usuario: Usuario) {
-    const urlEndpoint = 'http://localhost:8090/oauth/token';
-
-
-
-
+    const urlEndpoint = 'http://localhost:9000/oauth/token';
 
     
 
@@ -63,12 +59,19 @@ export class AuthService {
   guardarUsuario(accessToken: string): void {
     let payload = this.obtenerDatosToken(accessToken);
     this._usuario = new Usuario();
-    this._usuario.nombre = payload.nombre;
-    this._usuario.apellido = payload.apellido;
+    this._usuario.nombres = payload.nombre;
+    this._usuario.apellidos = payload.apellido;
+    this._usuario.idGrupo = payload.idGrupo;
     this._usuario.email = payload.email;
     this._usuario.username = payload.user_name;
     this._usuario.roles = payload.authorities;
     sessionStorage.setItem('usuario', JSON.stringify(this._usuario));
+    sessionStorage.setItem('username',this._usuario.username);
+    sessionStorage.setItem('idGrupo',String(this._usuario.idGrupo));
+   // String(this._usuario.idGrupo)
+  //console.log(sessionStorage.getItem('usuario'));
+   
+
   }
 
   guardarToken(accessToken: string): void {
@@ -104,5 +107,7 @@ export class AuthService {
     sessionStorage.clear();
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('idGrupo');
   }
 }

@@ -13,9 +13,15 @@ import { ActualizarEmpresaComponent } from './empresas/actualizar-empresa/actual
 import { FormsModule } from '@angular/forms';
 import { ListarSedesComponent } from './sedes/listar-sedes/listar-sedes.component';
 import { ListarEmpleadosComponent } from './empleados/listar-empleados/listar-empleados.component';
-import { AccesoUsuarioComponent } from './login/acceso-usuario/acceso-usuario.component';
+
 import { RegistrarEmpleadosComponent } from './empleados/registrar-empleados/registrar-empleados.component';
 import { LoginComponent } from './usuarios/login.component';
+
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { RegistrarSedeComponent } from './sedes/registrar-sede/registrar-sede.component';
+
 
 
 
@@ -28,9 +34,9 @@ import { LoginComponent } from './usuarios/login.component';
     ActualizarEmpresaComponent,
     ListarSedesComponent,
     ListarEmpleadosComponent,
-    AccesoUsuarioComponent,
-    RegistrarEmpleadosComponent,
-    LoginComponent
+     RegistrarEmpleadosComponent,
+    LoginComponent,
+    RegistrarSedeComponent
     
   ],
   imports: [
@@ -39,7 +45,10 @@ import { LoginComponent } from './usuarios/login.component';
     MatButtonModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

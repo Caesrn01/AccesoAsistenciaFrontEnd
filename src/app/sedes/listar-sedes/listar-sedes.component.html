@@ -1,1 +1,52 @@
-<p>listar-sedes works!</p>
+<div class="card border-primary mb-3">
+    <div class="card-header">Empresas</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Listado de Sedes</h5>
+      <div class="my-2 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/sedes/registrar']">
+            Crear Sede
+        </button>
+      </div>
+      <div *ngIf="totalSedes == 0" class="alert alert-info">
+         No hay registros en la base de datos!
+      </div>
+      <table class="table table-bordered table-striped" *ngIf="totalSedes > 0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Codigo Sede</th>
+            <th>Nombre </th>
+            <th>Direccion</th>
+            <th>Estado</th>      
+             
+             <th>editar</th>
+             <th>eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sede of sedes">
+            <td>{{sede.idSede}}</td>
+            <td>{{sede.codigoSede}}</td>
+            <td>{{sede.nombreSede}}</td>
+            <td>{{sede.direccion}}</td>
+            <td>
+                <ng-template [ngIf]="sede.estado==='A'" [ngIfElse]="inactivo">Activo</ng-template>
+                <ng-template #inactivo>Inactivo </ng-template>             
+            </td>          
+          
+            <td>
+              <button type="button" name="editar" [routerLink]="['/sedes/actualizar', sede.idSede]" class="btn btn-primary btn-sm">editar</button>
+            </td>
+            <td>
+              <button type="button" name="eliminar" (click)='eliminarSede(sede)' class="btn btn-danger btn-sm">eliminar</button>
+            </td>
+  
+  
+  
+  
+          </tr>
+        </tbody>
+      </table>
+  
+    </div>
+  </div>

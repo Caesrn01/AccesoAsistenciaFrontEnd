@@ -30,7 +30,11 @@ export class RegistrarEmpresaComponent implements OnInit {
       this.empresa = dato;
     } ,error => console.log(error));
 */
+  
+   console.log(sessionStorage.getItem('username'));
+   console.log(sessionStorage.getItem('idGrupo'));
 
+   
     this.activatedRoute.paramMap.subscribe(params => {
       let id = params.get('id');
       if (id) {
@@ -46,9 +50,11 @@ export class RegistrarEmpresaComponent implements OnInit {
   }*/
 
   guardarEmpresa() {
+    this.empresa.userCreacion = sessionStorage.getItem('username');
+    this.empresa.idGrupo = parseInt(sessionStorage.getItem('idGrupo'));
     this.empresaService.registrarEmpresa(this.empresa).subscribe(empresa => {
             console.log(empresa);
-             Swal.fire('Nueva Empresa', `La empresa <b> ${this.empresa.razonSocial} </b> ha sido creado con éxito`, 'success' )
+             Swal.fire('Nueva Empresa', `La empresa <b> ${this.empresa.nombreEmpresa} </b> ha sido creado con éxito`, 'success' )
             this.RetornarListaEmpresas();
            // swal('Nuevo cliente', `El cliente ${cliente.nombre} ha sido creado con éxito`, 'success');
            
@@ -75,6 +81,9 @@ export class RegistrarEmpresaComponent implements OnInit {
   }
 
   actualizarEmpresa(){
+  
+    this.empresa.userActualizacion= sessionStorage.getItem('username');
+
     this.empresaService.actualizarEmpresa(this.empresa).subscribe(empresa => {    
 
         this.RetornarListaEmpresas();

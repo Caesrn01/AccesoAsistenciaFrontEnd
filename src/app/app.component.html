@@ -18,6 +18,13 @@
                 Empresas 
             </a>
         </li>
+
+        <li  *ngIf="authService.isAuthenticated()" class="nav-item" routerLinkActive="active" >
+          <a routerLink="sedes/listar" routerLinkActive="active" class="nav-link">
+              Sedes 
+          </a>
+       </li>
+
         <li  *ngIf="authService.isAuthenticated()" class="nav-item" routerLinkActive="active">
             <a routerLink="empleados/listar" routerLinkActive="active" class="nav-link">
                 Empleados

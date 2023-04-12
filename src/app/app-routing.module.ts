@@ -7,12 +7,17 @@ import { ActualizarEmpresaComponent } from './empresas/actualizar-empresa/actual
 import { LoginComponent } from './usuarios/login.component';
 import {ListarEmpleadosComponent} from './empleados/listar-empleados/listar-empleados.component';
 import {RegistrarEmpleadosComponent} from './empleados/registrar-empleados/registrar-empleados.component';
+import { RegistrarSedeComponent } from './sedes/registrar-sede/registrar-sede.component';
+import { ListarSedesComponent } from './sedes/listar-sedes/listar-sedes.component';
 
 const routes: Routes=[
   {path: 'empresas/listar-empresas',component:ListaEmpresasComponent},
   {path:'', redirectTo:'empresas/listar-empresas',pathMatch:'full'},
   {path:'empresas/registrar',component:RegistrarEmpresaComponent},
   {path:'empresas/actualizar/:id',component:RegistrarEmpresaComponent},
+  {path:'sedes/actualizar/:id',component:RegistrarSedeComponent},
+  {path:'sedes/registrar',component:RegistrarSedeComponent},
+  {path:'sedes/listar',component:ListarSedesComponent},
   {path: 'empleados/listar',component:ListarEmpleadosComponent},
    {path:'empleados/registrar',component:RegistrarEmpleadosComponent},
    {path:'empleados/actualizar/:id',component:RegistrarEmpleadosComponent},

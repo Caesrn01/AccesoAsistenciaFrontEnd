@@ -1,9 +1,18 @@
 export class Empresa {
-    id:number;
-    nroRuc?:string;  
-    razonSocial?:string;
-    direccPrincipal?:string;
-    estadoEmpresa?:string;
+    idEmpresa:number;
+    idGrupo:number;
+    codigoEmpresa:string;
+    nombreEmpresa:string;
+    nroIdentificacion:string;  
+    estado:string;
+    descEstado:string;
+    userActualizacion:string;
+    userCreacion:String;
+    
+
+
+
+   
 
 }
 

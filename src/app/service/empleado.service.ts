@@ -21,7 +21,7 @@ export class EmpleadoService {
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   
-  private baseUrl = "http://localhost:8090/api/empleado";
+  private baseUrl = "http://localhost:9000/api/empleado";
 
   private agregarAuthorizationHeader() {
     let token = this.authService.token;

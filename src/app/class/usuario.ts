@@ -1,9 +1,13 @@
 export class Usuario {
-    id: number;
+    idEmpresa: number;
+    idGrupo: number;
     username: string;
     password: string;
-    nombre: string;
-    apellido: string;
+    nombres: string;
+    apellidos: string;
     email: string;
+   // IdEmpleado:number;
     roles: string[] = [];
 }
+
+

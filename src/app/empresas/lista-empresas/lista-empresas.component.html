@@ -16,23 +16,24 @@
       <thead>
         <tr>
           <th>#</th>
+          <th>Codigo Empresa</th>
           <th>Nro Ruc</th>
           <th>Razon Social</th>
-          <th>Direccion Principal</th>
-           <th>Estado</th>
+          <th>Estado</th>      
+           
            <th>editar</th>
            <th>eliminar</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let empresa of empresas">
-          <td>{{empresa.id}}</td>
-          <td>{{empresa.nroRuc}}</td>
-          <td>{{empresa.razonSocial}}</td>
-          <td>{{empresa.direccPrincipal}}</td>
-          <td >Activo</td> 
+          <td>{{empresa.idEmpresa}}</td>
+          <td>{{empresa.codigoEmpresa}}</td>
+          <td>{{empresa.nroIdentificacion}}</td>
+          <td>{{empresa.nombreEmpresa}}</td>          
+          <td >{{empresa.descEstado}}</td> 
           <td>
-            <button type="button" name="editar" [routerLink]="['/empresas/actualizar', empresa.id]" class="btn btn-primary btn-sm">editar</button>
+            <button type="button" name="editar" [routerLink]="['/empresas/actualizar', empresa.idEmpresa]" class="btn btn-primary btn-sm">editar</button>
           </td>
           <td>
             <button type="button" name="eliminar" (click)='eliminarEmpresa(empresa)' class="btn btn-danger btn-sm">eliminar</button>

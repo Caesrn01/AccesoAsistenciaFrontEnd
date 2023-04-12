@@ -1,3 +1,4 @@
+<!--
 <br>
 <div class="card border-primary text-center"  >
     <div class="card-header ">{{titulo}}</div>
@@ -24,4 +25,59 @@
       </form>
     </div>
   </div>
+ 
+ -->
+
+
+
+
+
+  <div class = "bootstrap-wrapper">
+    <div class = "container">
+      <div class = "row mt20">
+        <div class = "col-md-6 offset-md-3">
+       
+          <mat-card>
+            <div class = "container text-center">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHAx0TmUme8CzEN-W1FJJOLvgKSe5nT2F6oQ&usqp=CAU" width = "100" height = "100">
+            </div>
+
+
+  
+            <h1 class = "text-center">Inicio de sesión</h1>
+            <form (ngSubmit) = "login()">
+              <mat-form-field class = "full-width"  appearance = "outline">
+                <mat-label>Nombre de usuario</mat-label>
+                <input [(ngModel)] = "usuario.username" name = "username" id="username" required  matInput placeholder="Username">
+                
+
+
+             
+
+              </mat-form-field>
+              <mat-form-field class="full-width"  appearance = "outline">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" [(ngModel)] = "usuario.password" name = "password" id="password"  required   matInput placeholder="Password">
+                
+              </mat-form-field>
+
+       
+  
+              <br><br>
+  
+              <div class = "container text-center">
+                
+                <button type = "submit" mat-raised-button color="primary">Iniciar sesión</button>
+
+              </div>
+
+           
+
+            </form>
+            </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
   
